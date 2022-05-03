@@ -1,0 +1,9 @@
+{
+  "endOfLine": "crlf",
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "arrowParens": "avoid",
+  "printWidth": 80
+}
