@@ -30,12 +30,20 @@ export default defineComponent({
 
 <template>
   <div class="wrapper">
-    <input type="text" v-model="imageUrl" />
+    <input type="text" placeholder="URL" v-model="imageUrl" />
+
+    <label>Coordinates separated by space - x y w h</label>
     <textarea cols="30" rows="10" v-model="regionText" />
   </div>
 
   <ShowRegion v-if="region && imageUrl" :imageUrl="imageUrl" :region="region" />
 </template>
+
+<style>
+body {
+  font-family: sans-serif;
+}
+</style>
 
 <style scoped>
 .wrapper {
