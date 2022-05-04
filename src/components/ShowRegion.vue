@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watchEffect} from 'vue'
 
 import Region from '../common/Region'
 
-const { region } = defineProps<{
+const props = defineProps<{
   imageUrl: string
   region: Region
 }>()
@@ -21,10 +21,12 @@ function updateCanvas() {
 
   if (!ctx) return
 
+  ctx.clearRect(0, 0, canvas.value!.width, canvas.value!.height)
+
   ctx.strokeStyle = 'red'
   ctx.lineWidth = 2
   ctx.beginPath()
-  ctx.rect(...region.toArray())
+  ctx.rect(...props.region.toArray())
   ctx.stroke()
 }
 
@@ -37,7 +39,7 @@ function updateCanvasSize() {
   canvasRef.width = imgRef.width
   canvasRef.height = imgRef.height
 
-  updateCanvas()
+  watchEffect(updateCanvas)
 }
 </script>
 
